@@ -2,11 +2,10 @@
 <html>
 	<head>
 
-		<% if is_superadmin? || is_manager? %>
+		
 			<title><%= "Tableau de bord " %></title>
-		<% else %>
-			<title><%= "Tableau de bord - #{get_app_name(current_user)}" %></title>
-		<% end %>
+	
+			
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,38 +13,20 @@
   </head>
 
   <body>
-		<div class="wrapper">
+		<div class="o-page">
 		<%= render :partial => 'layouts/partials/flash_messages', :flash => flash %>
 	
 		<!-- Left Sidebar -->
 	  <%= render('layouts/partials/dashboard/sidebar') %>
 	   <!-- End Left sidebar -->
 
-
-	 
-
-	  <!-- Content Wrapper. Contains page content -->
-	  <div class="main-panel">
-	  		<!-- Left Sidebar -->
-			  <%= render('layouts/partials/dashboard/navbar') %>
-			   <!-- End Left sidebar -->
-				<!-- Left Sidebar -->
-			<% if is_superadmin? %>
-				<%= render('layouts/partials/smtp_alert') %>
-			<% end %>
-		<% if is_admin? %>
-			
-			<%= render('layouts/partials/unregistered_alert') %>
-		<% end %>
-
-	   <!-- End Left sidebar -->
+<main class="o-page__content">
+ <%= render('layouts/partials/dashboard/navbar') %>
 				
 	    <%= yield %>
 	 
-
-	  <!-- Main Footer -->
-	  <%= render('layouts/partials/dashboard/footer') %>
-	   <!-- End Main Footer -->
+ </main><!-- // .o-page__content -->
+	  
  	</div><!-- /.content-wrapper -->
 
 	</div><!-- ./wrapper -->

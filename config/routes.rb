@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   resources :stock_movement_details
   resources :stock_movements
   resources :movement_types
@@ -59,7 +58,4 @@ Rails.application.routes.draw do
     get code, :to => "errors#show", :code => code
   end
 
-=======
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
->>>>>>> 48238445d4ca67f96f5805c6a30dee3fcf930c08
 end

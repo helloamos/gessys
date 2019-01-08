@@ -14,7 +14,7 @@
                       <%= image_tag "logo/logo-login.svg", alt: "Dashboard UI Kit" %> 
                     <% end %>
 
-                    <h1 class="u-h3 u-text-center u-mb-zero">Welcome back! Please login.</h1>
+                    <h1 class="u-h3 u-text-center u-mb-zero">Hello! Veuillez vous connecter.</h1>
                 </header>
                 
                 <div class="c-card__body">
@@ -43,10 +43,11 @@
                 </div>
               </div>
               <div class="o-line">
-                <a class="u-text-mute u-text-small" href="register.html">Don’t have an account yet? Get Started</a>
-                <a class="u-text-mute u-text-small" href="forgot-password.html">Forgot Password?</a>
+
+                <!-- <a class="u-text-mute u-text-small" href="register.html">Don’t have an account yet? Get Started</a>-->
+                  <%= link_to "Forgot your password?", new_password_path(resource_name), class: "u-text-mute u-text-small" %><br />
+
             </div>
     </div>
 
-                  <%= render "users/shared/links" %>
 </div>

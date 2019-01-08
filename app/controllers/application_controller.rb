@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-<<<<<<< HEAD
 
   # Include Application helper.
 	include ApplicationHelper
@@ -15,6 +14,4 @@ class ApplicationController < ActionController::Base
 	
 
   
-=======
->>>>>>> 48238445d4ca67f96f5805c6a30dee3fcf930c08
 end

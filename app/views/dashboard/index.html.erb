@@ -1,4 +1,4 @@
-<% if is_admin? %>
+<% if current_user %>
 		<%= render "dashboard/partials/admin-dashboard" %>
 	<% elsif is_superadmin? %>
 		<%= render "dashboard/partials/admin-dashboard" %>
