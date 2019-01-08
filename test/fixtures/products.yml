@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id                  :integer          not null, primary key
+#  name                :string
+#  unity_id            :integer
+#  unit_price          :float
+#  deposit_id          :integer
+#  status              :string
+#  product_category_id :integer
+#  user_id             :integer
+#  reorder_threshold   :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  unity: one
+  unit_price: 1.5
+  deposit: one
+  status: MyString
+  product_category: one
+  user: one
+  reorder_threshold: 1
+
+two:
+  name: MyString
+  unity: two
+  unit_price: 1.5
+  deposit: two
+  status: MyString
+  product_category: two
+  user: two
+  reorder_threshold: 1

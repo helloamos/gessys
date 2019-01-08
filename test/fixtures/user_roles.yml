@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: user_roles
+#
+#  id         :integer          not null, primary key
+#  role_id    :integer
+#  user_id    :integer
+#  created_by :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  role: one
+  user: one
+
+two:
+  role: two
+  user: two

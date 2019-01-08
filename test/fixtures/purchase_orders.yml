@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: purchase_orders
+#
+#  id          :integer          not null, primary key
+#  reference   :string
+#  provider_id :integer
+#  status      :string
+#  user_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reference: MyString
+  provider: one
+  status: MyString
+  user: one
+
+two:
+  reference: MyString
+  provider: two
+  status: MyString
+  user: two
