@@ -9,6 +9,7 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
+<<<<<<< HEAD
 //Default
 // require rails-ujs
 // require turbolinks
@@ -25,3 +26,9 @@
 //= require bootstrap
 //= require toastr
 //= require rails.validations
+=======
+//
+//= require rails-ujs
+//= require turbolinks
+//= require_tree .
+>>>>>>> 48238445d4ca67f96f5805c6a30dee3fcf930c08

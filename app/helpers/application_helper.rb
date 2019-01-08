@@ -1,4 +1,5 @@
 module ApplicationHelper
+<<<<<<< HEAD
 
     def resource_name
 	    :user
@@ -242,4 +243,6 @@ module ApplicationHelper
 	def current_company
 		company = Company.first
 	end
+=======
+>>>>>>> 48238445d4ca67f96f5805c6a30dee3fcf930c08
 end
