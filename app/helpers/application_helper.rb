@@ -17,7 +17,13 @@ module ApplicationHelper
 	end
 	
 	
-	
+	def notifications?
+		true
+	end
+
+	def messages?
+		true
+	end
 
 	def current_company
 	

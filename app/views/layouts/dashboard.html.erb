@@ -14,20 +14,20 @@
 
   <body>
 		<div class="o-page">
-		<%= render :partial => 'layouts/partials/flash_messages', :flash => flash %>
+			<%= render :partial => 'layouts/partials/flash_messages', :flash => flash %>
 	
-		<!-- Left Sidebar -->
-	  <%= render('layouts/partials/dashboard/sidebar') %>
-	   <!-- End Left sidebar -->
+			<!-- Left Sidebar -->
+			<%= render('layouts/partials/dashboard/sidebar') %>
+			<!-- End Left sidebar -->
 
-<main class="o-page__content">
- <%= render('layouts/partials/dashboard/navbar') %>
-				
-	    <%= yield %>
-	 
- </main><!-- // .o-page__content -->
+			<main class="o-page__content">
+					<%= render('layouts/partials/dashboard/navbar') %>
+						<div class="container-fluid">
+
+								<%= yield %>
+						</div>
+			</main><!-- // .o-page__content -->
 	  
- 	</div><!-- /.content-wrapper -->
 
 	</div><!-- ./wrapper -->
   </body>
