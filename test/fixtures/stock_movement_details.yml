@@ -2,14 +2,14 @@
 #
 # Table name: stock_movement_details
 #
-#  id                :integer          not null, primary key
-#  product_id        :integer
+#  id                :bigint(8)        not null, primary key
+#  product_id        :bigint(8)
 #  unit_price        :float
 #  quantity          :integer
 #  amount            :float
 #  status            :string
-#  stock_movement_id :integer
-#  user_id           :integer          not null
+#  stock_movement_id :bigint(8)
+#  user_id           :bigint(8)        not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #

@@ -2,11 +2,11 @@
 #
 # Table name: orders
 #
-#  id          :integer          not null, primary key
+#  id          :bigint(8)        not null, primary key
 #  reference   :string
-#  customer_id :integer
+#  customer_id :bigint(8)
 #  status      :string
-#  user_id     :integer
+#  user_id     :bigint(8)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

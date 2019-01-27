@@ -2,11 +2,11 @@
 #
 # Table name: stock_movements
 #
-#  id               :integer          not null, primary key
+#  id               :bigint(8)        not null, primary key
 #  reference        :string
-#  movement_type_id :integer
+#  movement_type_id :bigint(8)
 #  status           :string
-#  user_id          :integer
+#  user_id          :bigint(8)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #

@@ -1,5 +1,6 @@
 class ProvidersController < ApplicationController
   before_action :set_provider, only: [:show, :edit, :update, :destroy]
+  layout "dashboard"
 
   # GET /providers
   # GET /providers.json
@@ -24,15 +25,19 @@ class ProvidersController < ApplicationController
   # POST /providers
   # POST /providers.json
   def create
-    @provider = Provider.new(provider_params)
+    @provider = current_user.providers.build(provider_params)
 
     respond_to do |format|
       if @provider.save
+        @providers = current_user.providers
+
         format.html { redirect_to @provider, notice: 'Provider was successfully created.' }
         format.json { render :show, status: :created, location: @provider }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @provider.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -42,6 +47,7 @@ class ProvidersController < ApplicationController
   def update
     respond_to do |format|
       if @provider.update(provider_params)
+        @providers = current_user.providers
         format.html { redirect_to @provider, notice: 'Provider was successfully updated.' }
         format.json { render :show, status: :ok, location: @provider }
       else
@@ -69,6 +75,6 @@ class ProvidersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def provider_params
-      params.require(:provider).permit(:name, :address, :city, :country, :phone, :email, :status, :user_id)
+      params.require(:provider).permit(:name, :address, :city, :country, :phone, :email)
     end
 end

@@ -1,0 +1,16 @@
+ <% @providers.each do |provider| %>
+      <tr class="c-table__row" >
+        <td class="c-table__cell"><%= provider.name %></td>
+        <td class="c-table__cell"><%= provider.address %></td>
+        <td class="c-table__cell"><%= provider.city %></td>
+        <td class="c-table__cell"><%= provider.country %></td>
+        <td class="c-table__cell"><%= provider.phone %></td>
+        <td class="c-table__cell"><%= provider.email %></td>
+       
+        <td class="c-table__cell">
+        <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_provider_path(provider), remote: true %>
+       <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), provider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+<% end %>

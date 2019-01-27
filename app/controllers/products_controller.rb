@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  layout "dashboard"
 
   # GET /products
   # GET /products.json

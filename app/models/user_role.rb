@@ -2,9 +2,9 @@
 #
 # Table name: user_roles
 #
-#  id         :integer          not null, primary key
-#  role_id    :integer
-#  user_id    :integer
+#  id         :bigint(8)        not null, primary key
+#  role_id    :bigint(8)
+#  user_id    :bigint(8)
 #  created_by :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

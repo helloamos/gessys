@@ -2,14 +2,14 @@
 #
 # Table name: products
 #
-#  id                  :integer          not null, primary key
+#  id                  :bigint(8)        not null, primary key
 #  name                :string
-#  unity_id            :integer
+#  unity_id            :bigint(8)
 #  unit_price          :float
-#  deposit_id          :integer
+#  deposit_id          :bigint(8)
 #  status              :string
-#  product_category_id :integer
-#  user_id             :integer
+#  product_category_id :bigint(8)
+#  user_id             :bigint(8)
 #  reorder_threshold   :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null

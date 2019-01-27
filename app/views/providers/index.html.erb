@@ -1,41 +1,24 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Providers</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>Country</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>Status</th>
-      <th>User</th>
-      <th colspan="3"></th>
+<table class="c-table" id="datatable">
+  <caption class="c-table__title">
+        Fournisseurs <small>Liste</small>
+        <div class="c-right">
+          <%= link_to 'Ajouter ', new_provider_path, class: "c-btn c-btn--info", remote: true %>
+        </div>
+  </caption>
+  <thead class="c-table__head c-table__head--slim">
+    <tr class="c-table__row">
+      <th class="c-table__cell c-table__cell--head">Name</th>
+      <th class="c-table__cell c-table__cell--head">Address</th>
+      <th class="c-table__cell c-table__cell--head">City</th>
+      <th class="c-table__cell c-table__cell--head">Country</th>
+      <th class="c-table__cell c-table__cell--head">Phone</th>
+      <th class="c-table__cell c-table__cell--head">Email</th>
+      <th class="c-table__cell c-table__cell--head">Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @providers.each do |provider| %>
-      <tr>
-        <td><%= provider.name %></td>
-        <td><%= provider.address %></td>
-        <td><%= provider.city %></td>
-        <td><%= provider.country %></td>
-        <td><%= provider.phone %></td>
-        <td><%= provider.email %></td>
-        <td><%= provider.status %></td>
-        <td><%= provider.user %></td>
-        <td><%= link_to 'Show', provider %></td>
-        <td><%= link_to 'Edit', edit_provider_path(provider) %></td>
-        <td><%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="providers">
+    <%= render 'index' %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Provider', new_provider_path %>
+<div id="provider-modal" class="c-modal modal fade" data-backdrop="static"></div>
