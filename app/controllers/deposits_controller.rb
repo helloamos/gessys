@@ -1,5 +1,6 @@
 class DepositsController < ApplicationController
   before_action :set_deposit, only: [:show, :edit, :update, :destroy]
+  layout "dashboard"
 
   # GET /deposits
   # GET /deposits.json
@@ -24,15 +25,19 @@ class DepositsController < ApplicationController
   # POST /deposits
   # POST /deposits.json
   def create
-    @deposit = Deposit.new(deposit_params)
+    @deposit = current_user.deposits.build(deposit_params)
 
     respond_to do |format|
       if @deposit.save
+        @deposits = Deposit.all
+
         format.html { redirect_to @deposit, notice: 'Deposit was successfully created.' }
         format.json { render :show, status: :created, location: @deposit }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @deposit.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -42,11 +47,14 @@ class DepositsController < ApplicationController
   def update
     respond_to do |format|
       if @deposit.update(deposit_params)
+        @deposits = Deposit.all
         format.html { redirect_to @deposit, notice: 'Deposit was successfully updated.' }
         format.json { render :show, status: :ok, location: @deposit }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @deposit.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -69,6 +77,6 @@ class DepositsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deposit_params
-      params.require(:deposit).permit(:name, :address, :description, :status, :user_id)
+      params.require(:deposit).permit(:name, :address, :description)
     end
 end

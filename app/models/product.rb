@@ -20,4 +20,8 @@ class Product < ApplicationRecord
   belongs_to :deposit
   belongs_to :product_category
   belongs_to :user
+
+
+  # Fields validations
+  validates_presence_of :name, :product_category_id, :unity_id
 end

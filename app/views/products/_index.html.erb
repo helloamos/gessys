@@ -1,10 +1,10 @@
 <% @products.each do |product| %>
       <tr class="c-table__row">
         <td class="c-table__cell "><%= product.name %></td>
-        <td class="c-table__cell "><%= product.unity %></td>
+        <td class="c-table__cell "><%= unity_to_name(product.unity_id) %></td>
         <td class="c-table__cell "><%= product.unit_price %></td>
-        <td class="c-table__cell "><%= product.deposit %></td>
-        <td class="c-table__cell "><%= product.product_category %></td>
+        <td class="c-table__cell "><%= deposit_to_name(product.deposit_id) %></td>
+        <td class="c-table__cell "><%= product_category_to_name(product.product_category_id) %></td>
         <td class="c-table__cell "><%= product.reorder_threshold %></td>
         
         <td class="c-table__cell ">

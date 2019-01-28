@@ -1,6 +1,6 @@
 class StockMovementsController < ApplicationController
   before_action :set_stock_movement, only: [:show, :edit, :update, :destroy]
-
+  layout 'dashboard'
   # GET /stock_movements
   # GET /stock_movements.json
   def index

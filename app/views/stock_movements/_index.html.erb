@@ -1,0 +1,12 @@
+<% @stock_movements.each do |stock_movement| %>
+      <tr class="c-table__row">
+        <td class="c-table__cell"><%= stock_movement.reference %></td>
+        <td class="c-table__cell"><%= stock_movement.movement_type %></td>
+        <td class="c-table__cell"><%= stock_movement.status %></td>
+       
+        
+        <td class="c-table__cell">
+        <%= link_to 'Edit', edit_stock_movement_path(stock_movement) %>
+        <%= link_to 'Destroy', stock_movement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>

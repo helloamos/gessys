@@ -1,6 +1,7 @@
 class ProductCategoriesController < ApplicationController
   before_action :set_product_category, only: [:show, :edit, :update, :destroy]
 
+  layout "dashboard"
   # GET /product_categories
   # GET /product_categories.json
   def index
@@ -24,15 +25,18 @@ class ProductCategoriesController < ApplicationController
   # POST /product_categories
   # POST /product_categories.json
   def create
-    @product_category = ProductCategory.new(product_category_params)
+    @product_category = current_user.product_categories.build(product_category_params)
 
     respond_to do |format|
       if @product_category.save
+        @product_categories = ProductCategory.all
         format.html { redirect_to @product_category, notice: 'Product category was successfully created.' }
         format.json { render :show, status: :created, location: @product_category }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @product_category.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -42,11 +46,14 @@ class ProductCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @product_category.update(product_category_params)
+        @product_categories = ProductCategory.all
         format.html { redirect_to @product_category, notice: 'Product category was successfully updated.' }
         format.json { render :show, status: :ok, location: @product_category }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @product_category.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -69,6 +76,6 @@ class ProductCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_category_params
-      params.require(:product_category).permit(:name, :description, :status, :user_id)
+      params.require(:product_category).permit(:name, :description)
     end
 end

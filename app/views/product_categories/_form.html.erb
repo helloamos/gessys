@@ -1,37 +1,23 @@
-<%= form_with(model: product_category, local: true) do |form| %>
-  <% if product_category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product_category.errors.count, "error") %> prohibited this product_category from being saved:</h2>
+<%= form_with(model: product_category, local: false) do |form| %>
+  <div class="c-modal__body">
+  
+        <ul class="errors">
+        </ul>
 
-      <ul>
-      <% product_category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :product_category_name %>
+  <div class="c-field u-mb-small">
+    <%= form.label :name, class: "c-field__label" %>
+    <%= form.text_field :name, id: :product_category_name , class: "c-input", placeholder: "Nom"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :product_category_description %>
+  <div class="c-field u-mb-small">
+    <%= form.label :description , class: "c-field__label" %>
+    <%= form.text_area :description, id: :product_category_description, class: "c-input", placeholder: "Description"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :product_category_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :product_category_user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
+   </div><!-- modal body -->
+            <div class="c-modal__footer">
+                    <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+                    <%= form.submit "Enregistrer", class: "c-btn c-btn--success",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+            </div>
 <% end %>

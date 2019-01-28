@@ -1,42 +1,28 @@
-<%= form_with(model: unity, local: true) do |form| %>
-  <% if unity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(unity.errors.count, "error") %> prohibited this unity from being saved:</h2>
-
-      <ul>
-      <% unity.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+<%= form_with(model: unity, local: false) do |form| %>
+ <div class="c-modal__body">
+     <ul class="errors">
       </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :unity_name %>
+  <div class="c-field u-mb-small">
+    <%= form.label :name, class: "c-field__label" %>
+    <%= form.text_field :name, id: :unity_name, class: "c-input", placeholder: "Nom"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :unity_symbol %>
-    <%= form.text_field :unity_symbol, id: :unity_unity_symbol %>
+  <div class="c-field u-mb-small">
+    <%= form.label :unity_symbol, class: "c-field__label" %>
+    <%= form.text_field :unity_symbol, id: :unity_unity_symbol, class: "c-input", placeholder: "Symbol"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :unity_description %>
+  <div class="c-field u-mb-small">
+    <%= form.label :description, class: "c-field__label" %>
+    <%= form.text_area :description, id: :unity_description, class: "c-input", placeholder: "Description"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :unity_status %>
-  </div>
+ 
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :unity_user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  </div><!-- modal body -->
+            <div class="c-modal__footer">
+                    <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+                    <%= form.submit "Enregistrer", class: "c-btn c-btn--success",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+            </div>
 <% end %>

@@ -20,4 +20,10 @@ class User < ApplicationRecord
 
   has_many :customers, dependent: :destroy
   has_many :providers, dependent: :destroy
+  has_many :unities, dependent: :destroy
+  has_many :products, dependent: :destroy
+  has_many :product_categories, dependent: :destroy
+  has_many :deposits, dependent: :destroy
+  has_many :stock_movements, dependent: :destroy
+  
 end

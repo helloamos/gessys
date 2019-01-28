@@ -13,4 +13,7 @@
 
 class ProductCategory < ApplicationRecord
   belongs_to :user
+  
+  # Fields validations.
+  validates_presence_of :name
 end

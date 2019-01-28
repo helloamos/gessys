@@ -1,0 +1,13 @@
+<% @deposits.each do |deposit| %>
+    <tr class="c-table__row">
+        <td class="c-table__cell"><%= deposit.name %></td>
+        <td class="c-table__cell"><%= deposit.address %></td>
+        <td class="c-table__cell"><%= deposit.description %></td>
+       
+        <td class="c-table__cell">
+        <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_deposit_path(deposit), remote: true %>
+         <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), deposit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+<% end %>

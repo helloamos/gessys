@@ -1,33 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Product Categories</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th>User</th>
-      <th colspan="3"></th>
+<table class="c-table" id="datatable">
+  <caption class="c-table__title">
+        Catégories de produits <small>Liste</small>
+        <div class="c-right">
+          <%= link_to 'Ajouter', new_product_category_path, class: "c-btn c-btn--info", remote: true %>
+        </div>
+  </caption>
+  <thead class="c-table__head c-table__head--slim">
+    <tr class="c-table__row">
+      <th class="c-table__cell c-table__cell--head">Name</th>
+      <th class="c-table__cell c-table__cell--head">Description</th>
+      
+      <th class="c-table__cell c-table__cell--head no-sort">Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @product_categories.each do |product_category| %>
-      <tr>
-        <td><%= product_category.name %></td>
-        <td><%= product_category.description %></td>
-        <td><%= product_category.status %></td>
-        <td><%= product_category.user %></td>
-        <td><%= link_to 'Show', product_category %></td>
-        <td><%= link_to 'Edit', edit_product_category_path(product_category) %></td>
-        <td><%= link_to 'Destroy', product_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="product-categories">
+    <%= render 'index' %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Product Category', new_product_category_path %>
+<div id="product-category-modal" class="c-modal modal fade" data-backdrop="static"></div>

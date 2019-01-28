@@ -1,42 +1,29 @@
-<%= form_with(model: deposit, local: true) do |form| %>
-  <% if deposit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(deposit.errors.count, "error") %> prohibited this deposit from being saved:</h2>
+<%= form_with(model: deposit, local: false) do |form| %>
+   <div class="c-modal__body">
+  
+        <ul class="errors">
+        </ul>
 
-      <ul>
-      <% deposit.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      
+      <div class="c-field u-mb-small">
+        <%= form.label :name, class: "c-field__label" %>
+        <%= form.text_field :name, id: :deposit_name, class: "c-input", placeholder: "Nom"  %>
+      </div>
+
+    <div class="c-field u-mb-small">
+      <%= form.label :address, class: "c-field__label" %>
+      <%= form.text_field :address, id: :deposit_address, class: "c-input", placeholder: "Adresse"  %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :deposit_name %>
+  <div class="c-field u-mb-small">
+    <%= form.label :description , class: "c-field__label" %>
+    <%= form.text_area :description, id: :deposit_description, class: "c-input", placeholder: "Description"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address, id: :deposit_address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :deposit_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :deposit_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :deposit_user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
+</div><!-- modal body -->
+            <div class="c-modal__footer">
+                    <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+                    <%= form.submit "Enregistrer", class: "c-btn c-btn--success",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+            </div>
 <% end %>

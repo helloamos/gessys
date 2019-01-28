@@ -1,0 +1,12 @@
+<% @product_categories.each do |product_category| %>
+    <tr class="c-table__row">
+        <td class="c-table__cell"><%= product_category.name %></td>
+        <td class="c-table__cell"><%= product_category.description %></td>
+        
+        <td class="c-table__cell">
+        <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_product_category_path(product_category), remote: true %>
+         <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), product_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+<% end %>
