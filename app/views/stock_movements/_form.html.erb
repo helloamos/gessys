@@ -1,26 +1,47 @@
-<%= form_with(model: stock_movement, local: true) do |form| %>
-<div class="c-modal__body">
+<%= form_with(model: stock_movement, local: false) do |form| %>
+<div class="modal-body">
      <ul class="errors">
       </ul>
 
-  <div class="c-field u-mb-small">
-    <%= form.label :reference, class: "c-field__label" %>
-    <%= form.text_field :reference, id: :stock_movement_reference, class: "c-input", placeholder: "Description"  %>
-  </div>
+  
+    <div class="form-group">
+      <%= form.label :reference %>
+      <%= form.text_field :reference, id: :stock_movement_reference, class: "form-control", placeholder: "Description"  %>
+    </div>
 
-  <div class="c-field u-mb-small">
-    <%= form.label :movement_type_id, class: "c-field__label" %>
-    <%= form.text_field :movement_type_id, id: :stock_movement_movement_type_id, class: "c-input", placeholder: "Description"  %>
-  </div>
-  <% form.fields_for :stock_movement_details do |builder| %>
-      <%= render 'stock_movement_detail_fields', :f => builder %>
-    <% end %>
-    <p><%= link_to_add_fields "Add Answer", form, :stock_movement_details %></p>
+    <div class="form-group">
+      <%= form.label :movement_type_id %>
+      <%= form.text_field :movement_type_id, id: :stock_movement_movement_type_id, class: "form-control", placeholder: "Description"  %>
+    </div>
+  
+    <div class="form-group">
+      <%= link_to_add_association('Ajouter un mouvement', form, :stock_movement_details, class: 'btn btn-primary') %>
+    </div>
+    <div class="form-group">
+      <table class='tables'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Produit</th>
+              <th>Quantité</th>
+              
+            </tr>
+          </thead>
+          <tbody class='fields'>
+            <% form.fields_for :stock_movement_details do |builder| %>
+            <%= render 'stock_movement_detail_fields', :f => builder %>
+          <% end %>
+          </tbody>
+        </table>
 
+ 
+    
+</div>
 
    </div><!-- modal body -->
-            <div class="c-modal__footer">
-                    <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
-                    <%= form.submit "Enregistrer", class: "c-btn c-btn--success",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
-            </div>
+            <div class="modal-footer">
+
+            <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+            <%= form.submit "Enregistrer", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+    </div>
 <% end %>

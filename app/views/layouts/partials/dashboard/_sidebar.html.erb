@@ -1,133 +1,16 @@
-<div class="o-page__sidebar js-page-sidebar">
-    <div class="c-sidebar">
-        
-        <%= link_to dashboard_url, class: "c-sidebar__brand" do %>
-            <%= image_tag "logo/logo.png", alt: "Logo", class: "c-sidebar__brand-img" %> 
-            Dashboard
-        <% end %>
-
-        <h4 class="c-sidebar__title">Dashboards</h4>
-        <ul class="c-sidebar__list">
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link is-active" href="home-overview.html">
-                    <i class="fa fa-home u-mr-xsmall"></i>Overview
-                </a>
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" href="performance.html">
-                    <i class="fa fa-tachometer u-mr-xsmall"></i>Performance <span class="c-badge c-badge--success c-badge--xsmall u-ml-xsmall">New</span>
-                </a>
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" href="analytics.html">
-                    <i class="fa fa-line-chart u-mr-xsmall"></i>Analytics
-                </a>
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="index.html">
-                    <i class="fa fa-rocket u-mr-xsmall"></i>Landing
-                </a>
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="projects.html">
-                    <i class="fa fa-table u-mr-xsmall"></i>Projects
-                </a>
-            </li>
-        </ul>
-
-       
-
-        <h4 class="c-sidebar__title">Stock</h4>
-        <ul class="c-sidebar__list">
-
-            <li class="c-sidebar__item">
-                <%= link_to raw('<i class="fa fa-user-circle u-mr-xsmall"></i>Mouvements'), stock_movements_path, class: "c-sidebar__link" %>
-
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="under-maintenance.html">
-                    <i class="fa fa-cogs u-mr-xsmall"></i>Under Maintenance 
-                </a>
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="404.html">
-                    <i class="fa fa-chain-broken u-mr-xsmall"></i>404 Page
-                </a>
-            </li>
-
-
-            <li class="c-sidebar__item has-submenu">
-                <a class="c-sidebar__link" data-toggle="collapse" href="#sidebar-submenu" aria-expanded="false" aria-controls="sidebar-submenu">
-                    <i class="fa fa-caret-square-o-down u-mr-xsmall"></i>Sub Menu
-                </a>
-                <ul class="c-sidebar__submenu collapse" id="sidebar-submenu">
-                    <li><a class="c-sidebar__link" href="#">Submenu link</a></li>
-                    <li><a class="c-sidebar__link" href="#">Submenu link</a></li>
-                    <li><a class="c-sidebar__link" href="#">Submenu link</a></li>
-                </ul>
-            </li>
-        </ul>
-
-        <h4 class="c-sidebar__title">Paramètres</h4>
-        <ul class="c-sidebar__list">
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="account-details.html">
-                    <i class="fa fa-user-circle u-mr-xsmall"></i>Account Details
-                </a>
-                <%= link_to raw('<i class="fa fa-user-circle u-mr-xsmall"></i>Utilisateurs'), users_path, class: "c-sidebar__link" %>
-                <%= link_to raw('<i class="fa fa-user-circle u-mr-xsmall"></i>Clients'), customers_path, class: "c-sidebar__link" %>
-                <%= link_to raw('<i class="fa fa-user-circle u-mr-xsmall"></i>Fournisseurs'), providers_path, class: "c-sidebar__link" %>
-                <%= link_to raw('<i class="fa fa-user-circle u-mr-xsmall"></i>Produits'), products_path, class: "c-sidebar__link" %>
-
-            </li>
-            
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="account-details.html">
-                    <i class="fa fa-user-circle u-mr-xsmall"></i>Account Details
-                </a>
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" href="account-settings.html">
-                    <i class="fa fa-cog u-mr-xsmall"></i>Account Settings
-                </a>
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="register.html">
-                    <i class="fa fa-user-plus u-mr-xsmall"></i>Register
-                </a>
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="forgot-password.html">
-                    <i class="fa fa-lock u-mr-xsmall"></i>Forgot Password
-                </a>
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="reset-password.html">
-                    <i class="fa fa-refresh u-mr-xsmall"></i>Reset Password
-                </a>
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" href="login.html">
-                    <i class="fa fa-sign-in u-mr-xsmall"></i>Login
-                </a>
-            </li>
-        </ul>
-
-       
-
-    </div><!-- // .c-sidebar -->
-</div><!-- // .o-page__sidebar -->
+<!-- Side Navbar -->
+<!-- ########## START: LEFT PANEL ########## -->
+<div class="br-logo">
+	<a href=""><span>[</span>GES<i>SYS</i><span>]</span></a>
+</div>
+<div class="br-sideleft sideleft-scrollbar">
+      <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
+        <!-- Sidebar Navigation Menus-->
+        <div class="main-menu">
+        	
+			<!-- Show Admin menu -->
+			<%= render 'layouts/partials/dashboard/navs/admin-nav' %>
+				
+			
+    	</div>  
+</div>

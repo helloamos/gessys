@@ -59,6 +59,10 @@ class DepositsController < ApplicationController
     end
   end
 
+  def delete
+    @deposit = Deposit.find(params[:deposit_id])
+  end
+
   # DELETE /deposits/1
   # DELETE /deposits/1.json
   def destroy

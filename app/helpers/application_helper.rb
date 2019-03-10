@@ -32,9 +32,20 @@ module ApplicationHelper
 		fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
 		  render(association.to_s.singularize + "_fields", :f => builder)
 		end
-		link_to_function(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
+		link_to(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
 	  end
 	  
+
+
+	  def link_to_add_row(name, f, association, **args)
+		new_object = f.object.send(association).klass.new
+		id = new_object.object_id
+		fields = f.fields_for(association, new_object, child_index: id) do |builder|
+		  render(association.to_s.singularize, f: builder)
+		end
+		link_to(name, '#', class: "add_fields " + args[:class], data: {id: id, fields: fields.gsub("\n", "")})
+	  end
+
 	def current_company
 	
 		company = Company.take

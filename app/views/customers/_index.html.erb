@@ -1,15 +1,22 @@
  <% @customers.each do |customer| %>
-      <tr class="c-table__row">
-        <td class="c-table__cell"><%= customer.full_name %></td>
-        <td class="c-table__cell"><%= customer.address %></td>
-        <td class="c-table__cell"><%= customer.city %></td>
-        <td class="c-table__cell"><%= customer.country %></td>
-        <td class="c-table__cell"><%= customer.phone %></td>
+      <tr>
+        <td><%= customer.full_name %></td>
+        <td><%= customer.address %></td>
+        <td><%= customer.city %></td>
+        <td><%= customer.country %></td>
+        <td><%= customer.phone %></td>
        
-        <td class="c-table__cell">
-		<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
-'), edit_customer_path(customer), remote: true %>
-       <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
-'), customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_customer_path(customer), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), customer_delete_path(customer), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
     </tr>
 <% end %>

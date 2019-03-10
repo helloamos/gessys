@@ -59,6 +59,10 @@ class UnitiesController < ApplicationController
     end
   end
 
+  def delete
+    @unity = Unity.find(params[:unity_id])
+  end
+
   # DELETE /unities/1
   # DELETE /unities/1.json
   def destroy

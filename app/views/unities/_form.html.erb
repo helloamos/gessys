@@ -1,28 +1,28 @@
 <%= form_with(model: unity, local: false) do |form| %>
- <div class="c-modal__body">
+ <div class="modal-body">
      <ul class="errors">
       </ul>
 
-  <div class="c-field u-mb-small">
-    <%= form.label :name, class: "c-field__label" %>
-    <%= form.text_field :name, id: :unity_name, class: "c-input", placeholder: "Nom"  %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :unity_name, class: "form-control", placeholder: "Nom"  %>
   </div>
 
-  <div class="c-field u-mb-small">
-    <%= form.label :unity_symbol, class: "c-field__label" %>
-    <%= form.text_field :unity_symbol, id: :unity_unity_symbol, class: "c-input", placeholder: "Symbol"  %>
+  <div class="form-group">
+    <%= form.label :unity_symbol %>
+    <%= form.text_field :unity_symbol, id: :unity_unity_symbol, class: "form-control", placeholder: "Symbol"  %>
   </div>
 
-  <div class="c-field u-mb-small">
-    <%= form.label :description, class: "c-field__label" %>
-    <%= form.text_area :description, id: :unity_description, class: "c-input", placeholder: "Description"  %>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :unity_description, class: "form-control", placeholder: "Description"  %>
   </div>
 
  
 
   </div><!-- modal body -->
-            <div class="c-modal__footer">
-                    <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
-                    <%= form.submit "Enregistrer", class: "c-btn c-btn--success",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
-            </div>
+            <div class="modal-footer">
+            <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+            <%= form.submit "Enregistrer", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+    </div>
 <% end %>

@@ -276,6 +276,16 @@ ActiveRecord::Schema.define(version: 20190108020240) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "full_name"
+    t.string "login", null: false
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.bigint "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.bigint "role_id"
+    t.string "status", default: "enable", null: false
+    t.boolean "receives_notifications", default: false
+    t.bigint "created_by"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -285,6 +295,7 @@ ActiveRecord::Schema.define(version: 20190108020240) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "companies", "users"

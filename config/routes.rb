@@ -1,25 +1,39 @@
 Rails.application.routes.draw do
   resources :stock_movement_details
-  resources :stock_movements
+  resources :stock_movements do  
+    get 'delete' 
+  end
   resources :movement_types
   resources :purchase_order_details
   resources :purchase_orders
   resources :order_details
   resources :orders
-  resources :products
-  resources :deposits
-  resources :unities
-  resources :product_categories
+  resources :products do    
+    get 'delete'
+  end
+  resources :deposits do   
+    get 'delete'
+  end
+  resources :unities do    
+    get 'delete'
+  end
+  resources :product_categories do   
+    get 'delete'
+  end
   resources :product_types
   resources :delivery_men
-  resources :providers
+  resources :providers do   
+    get 'delete'
+  end
   resources :role_permissions
   resources :permissions
   resources :user_roles
   resources :roles
   resources :customer_types
   resources :companies
-  resources :customers
+  resources :customers do   
+    get 'delete'
+  end
 
   get "/dashboard" => "dashboard#index" , as: :dashboard
   get "/users"     => "custom_users#index", as: :users 

@@ -1,53 +1,40 @@
-<div class="o-page o-page--center">
-  <div class="o-page__card">
-            <div class="c-card u-mb-xsmall">
-                <header class="c-card__header u-pt-large">
-                   <!-- <a class="c-card__icon" href="#!">
-                        <img src="images/logo-login.svg" alt="Dashboard UI Kit">
-                        <img src="images/logo-login.svg" alt="Dashboard UI Kit">
+<div class="signin-page">
+    <div class="signin--page__header">
+			<div class="signin-logo tx-center tx-28 tx-bold tx-inverse">
+				<%= render 'components/logo/logo' %>
+			</div>
+		<div class="tx-center mg-b-20">Veuillez vous connecter!</div>
+	</div>
+	
+	<div class="sigin-page__body">
+		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+			<div class="form-group">
+				<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control",  placeholder: "Votre e-mail" %>
+			</div>
 
-                    </a>-->
+			<div class="form-group">
+				<%= f.password_field :password, autocomplete: "current-password", class: "form-control",  placeholder: "Votre mot de passe" %>
+			</div>
 
-                   
+			<% if devise_mapping.rememberable? -%>
+				<div class="form-group">
+				<%= f.check_box :remember_me %>
+				<%= f.label "Se souvenir de moi" %>
+				</div>
+			<% end -%>
 
-                    <%= link_to root_url, class: "c-card__icon" do %>
-                      <%= image_tag "logo/logo-login.svg", alt: "Dashboard UI Kit" %> 
-                    <% end %>
-
-                    <h1 class="u-h3 u-text-center u-mb-zero">Hello! Veuillez vous connecter.</h1>
-                </header>
-                
-                <div class="c-card__body">
-                  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                    <div class="c-field u-mb-small">
-                      <%= f.label :email, class: "c-field__label" %>
-                      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "c-input", id: "input1", placeholder: "clark@dashboard.com" %>
-                    </div>
-
-                    <div class="c-field u-mb-small">
-                      <%= f.label :password, class: "c-field__label"%>
-                      <%= f.password_field :password, autocomplete: "current-password", class: "c-input", id: "input2", placeholder: "Numbers, Letters..." %>
-                    </div>
-
-                    <% if devise_mapping.rememberable? -%>
-                      <div class="c-field u-mb-small">
-                        <%= f.check_box :remember_me %>
-                        <%= f.label :remember_me %>
-                      </div>
-                    <% end -%>
-
-                    <div class="c-field u-mb-small">
-                      <%= f.submit "Log in", class: "c-btn c-btn--info c-btn--fullwidth" %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <div class="o-line">
-
-                <!-- <a class="u-text-mute u-text-small" href="register.html">Don’t have an account yet? Get Started</a>-->
-                  <%= link_to "Forgot your password?", new_password_path(resource_name), class: "u-text-mute u-text-small" %><br />
-
-            </div>
+			<div class="form-group">
+				<%= f.submit "Se connecter", class: "btn btn-info btn-block" %>
+			</div>
+		<% end %>
     </div>
+              
+	<div class="o-line">
+        <div class="mg-t-10 tx-center">
+			<%= link_to "Mot de passe oublié?", new_password_path(resource_name), class: "tx-info" %>
+		</div>
+
+	</div>
+   
 
 </div>

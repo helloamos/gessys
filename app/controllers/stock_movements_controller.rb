@@ -15,6 +15,7 @@ class StockMovementsController < ApplicationController
   # GET /stock_movements/new
   def new
     @stock_movement = StockMovement.new
+    @products = Product.all
   end
 
   # GET /stock_movements/1/edit
@@ -69,6 +70,6 @@ class StockMovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_movement_params
-      params.require(:stock_movement).permit(:reference, :movement_type_id, :status, :user_id)
+      params.require(:stock_movement).permit(:reference, :movement_type_id, stock_movement_details_attributes: [:_destroy ])
     end
 end

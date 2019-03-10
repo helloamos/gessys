@@ -58,6 +58,10 @@ class ProductCategoriesController < ApplicationController
     end
   end
 
+  def delete
+    @product_category = ProductCategory.find(params[:product_category_id])
+  end
+
   # DELETE /product_categories/1
   # DELETE /product_categories/1.json
   def destroy

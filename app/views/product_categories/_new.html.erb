@@ -1,13 +1,16 @@
 
-<div class="c-modal__dialog modal-dialog" role="document">
-        <div class="c-modal__content">
-            <div class="c-modal__header">
-                <h3 class="c-modal__title">Nouvelle catégorie</h3>
-                <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-close"></i>
-                </span>
-            </div>
-<%= render 'form', product_category: @product_category %>
+<!-- Modal -->
 
-        </div><!-- // .c-modal__content -->
-</div><!-- // .c-modal__dialog -->
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content ">
+      <div class="modal-header pd-y-20 pd-x-25">
+            <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Nouvelle catégorie de produit</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+<%= render 'form', product_category: @product_category %>
+</div>
+  </div>
+
