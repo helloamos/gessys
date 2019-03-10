@@ -1,4 +1,5 @@
-<%= form_with(model: movement_type, local: true) do |form| %>
+<%= form_with(model: movement_type, local: false) do |form| %>
+<div class="modal-body">
   <% if movement_type.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(movement_type.errors.count, "error") %> prohibited this movement_type from being saved:</h2>
@@ -11,27 +12,20 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :movement_type_name %>
+    <%= form.text_field :name, id: :movement_type_name, class: "form-control", placeholder: "Nom" , required: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :movement_type_description %>
+    <%= form.text_area :description, id: :movement_type_description, class: "form-control", placeholder: "Description" %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :movement_type_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :movement_type_user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  
+</div>
+  <div class="modal-footer">
+        <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+        <%= form.submit "Enregistrer", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
   </div>
 <% end %>

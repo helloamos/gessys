@@ -1,4 +1,6 @@
 class CustomerTypesController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_customer_type, only: [:show, :edit, :update, :destroy]
 
   # GET /customer_types

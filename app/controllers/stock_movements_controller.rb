@@ -15,25 +15,36 @@ class StockMovementsController < ApplicationController
   # GET /stock_movements/new
   def new
     @stock_movement = StockMovement.new
+    @product_categories = ProductCategory.all
     @products = Product.all
+    @movement_types = MovementType.all
+    @unities = Unity.all
   end
 
   # GET /stock_movements/1/edit
   def edit
+    @product_categories = ProductCategory.all
+    @products = Product.all
+    @movement_types = MovementType.all
+    @unities = Unity.all
   end
 
   # POST /stock_movements
   # POST /stock_movements.json
   def create
-    @stock_movement = StockMovement.new(stock_movement_params)
+    @stock_movement = current_user.stock_movements.build(stock_movement_params)
 
     respond_to do |format|
       if @stock_movement.save
+        @stock_movements = StockMovement.all
+
         format.html { redirect_to @stock_movement, notice: 'Stock movement was successfully created.' }
         format.json { render :show, status: :created, location: @stock_movement }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @stock_movement.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -43,22 +54,33 @@ class StockMovementsController < ApplicationController
   def update
     respond_to do |format|
       if @stock_movement.update(stock_movement_params)
+        @stock_movements = StockMovement.all
         format.html { redirect_to @stock_movement, notice: 'Stock movement was successfully updated.' }
         format.json { render :show, status: :ok, location: @stock_movement }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @stock_movement.errors, status: :unprocessable_entity }
+        format.js
       end
     end
+  end
+
+
+  def delete
+    @stock_movement = StockMovement.find(params[:stock_movement_id])
   end
 
   # DELETE /stock_movements/1
   # DELETE /stock_movements/1.json
   def destroy
     @stock_movement.destroy
+    @stock_movements = StockMovement.all
+
     respond_to do |format|
       format.html { redirect_to stock_movements_url, notice: 'Stock movement was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 
@@ -70,6 +92,6 @@ class StockMovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_movement_params
-      params.require(:stock_movement).permit(:reference, :movement_type_id, stock_movement_details_attributes: [:_destroy ])
+      params.require(:stock_movement).permit(:reference, :product_category_id, :product_id, :unity_id, :movement_type_id, :quantity, :observations)
     end
 end

@@ -1,4 +1,6 @@
 class UnitiesController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_unity, only: [:show, :edit, :update, :destroy]
 
   layout "dashboard"

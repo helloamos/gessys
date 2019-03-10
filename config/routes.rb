@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :stock_movements do  
     get 'delete' 
   end
-  resources :movement_types
+  resources :movement_types do     
+    get 'delete'
+  end
   resources :purchase_order_details
   resources :purchase_orders
   resources :order_details

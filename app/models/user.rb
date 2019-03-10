@@ -25,6 +25,8 @@ class User < ApplicationRecord
   has_many :product_categories, dependent: :destroy
   has_many :deposits, dependent: :destroy
   has_many :stock_movements, dependent: :destroy
+  has_many :movement_types, dependent: :destroy
+
 
 
 
