@@ -27,14 +27,7 @@ module ApplicationHelper
 
 
 	
-	def link_to_add_fields(name, f, association)
-		new_object = f.object.class.reflect_on_association(association).klass.new
-		fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-		  render(association.to_s.singularize + "_fields", :f => builder)
-		end
-		link_to_function(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
-	  end
-	  
+
 	def current_company
 	
 		company = Company.take
@@ -44,7 +37,15 @@ module ApplicationHelper
 		
 	end
 
+	def get_movement_type_name(id)
+		movement_type = MovementType.find(id)
+		movement_type.name
+	end
 
+	def get_product_name(id)
+		product = Product.find(id)
+		product.name
+	end
 	
 
 	def is_account_locked?(user)

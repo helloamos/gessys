@@ -1,4 +1,6 @@
 class UnitiesController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_unity, only: [:show, :edit, :update, :destroy]
 
   layout "dashboard"
@@ -57,6 +59,10 @@ class UnitiesController < ApplicationController
         format.js
       end
     end
+  end
+
+  def delete
+    @unity = Unity.find(params[:unity_id])
   end
 
   # DELETE /unities/1

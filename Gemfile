@@ -106,3 +106,4 @@ group :development do
   gem "binding_of_caller"
 end
  gem 'chartkick', '~> 3.0', '>= 3.0.2'
+ gem 'cocoon', '~> 1.2', '>= 1.2.12'

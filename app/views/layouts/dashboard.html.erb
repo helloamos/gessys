@@ -1,33 +1,28 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title><%= "Tableau de bord " %></title>	
+    	<%= csrf_meta_tags %>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
 
+  <body >
 		
-			<title><%= "Tableau de bord " %></title>
-	
-			
-    <%= csrf_meta_tags %>
+		<%= render :partial => 'layouts/partials/flash_messages', :flash => flash %>
+		<!-- Left Sidebar -->
+			<%= render('layouts/partials/dashboard/header') %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+		<!-- End Left sidebar -->
+<%= render('layouts/partials/dashboard/sidebar') %>
+		<div class="br-mainpanel">
+				
 
-  <body class="o-page">
-		
-			<%= render :partial => 'layouts/partials/flash_messages', :flash => flash %>
-	
-			<!-- Left Sidebar -->
-			<%= render('layouts/partials/dashboard/sidebar') %>
-			<!-- End Left sidebar -->
+					<%= yield %>
+				  
 
-			<main class="o-page__content">
-					<%= render('layouts/partials/dashboard/navbar') %>
-						<div class="container-fluid">
-
-								<%= yield %>
-						</div>
-			</main><!-- // .o-page__content -->
-	  
+		</div>
+	  <%= render('layouts/partials/dashboard/footer') %>
 
 	
   </body>

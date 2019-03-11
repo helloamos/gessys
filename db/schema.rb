@@ -42,18 +42,18 @@ ActiveRecord::Schema.define(version: 20190108020240) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string "full_name"
+    t.string "name"
     t.string "address"
     t.string "city"
     t.string "country"
     t.string "phone"
     t.string "slug"
-    t.string "status", default: "Enabled"
+    t.string "status", default: "enable"
+    t.bigint "customer_type_id"
+    t.string "email"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "customer_type_id"
-    t.string "email"
     t.index ["customer_type_id"], name: "index_customers_on_customer_type_id"
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
@@ -151,16 +151,21 @@ ActiveRecord::Schema.define(version: 20190108020240) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.bigint "unity_id"
-    t.float "unit_price"
+    t.string "bar_code"
+    t.string "serial_number"
+    t.float "unit_price", default: 0.0
+    t.bigint "provider_id"
     t.bigint "deposit_id"
-    t.string "status"
+    t.string "status", default: "enable"
     t.bigint "product_category_id"
     t.bigint "user_id"
     t.integer "reorder_threshold"
+    t.bigint "current_stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deposit_id"], name: "index_products_on_deposit_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
+    t.index ["provider_id"], name: "index_products_on_provider_id"
     t.index ["unity_id"], name: "index_products_on_unity_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -246,11 +251,21 @@ ActiveRecord::Schema.define(version: 20190108020240) do
   create_table "stock_movements", force: :cascade do |t|
     t.string "reference"
     t.bigint "movement_type_id"
+    t.bigint "product_category_id"
+    t.bigint "product_id"
+    t.bigint "deposit_id"
+    t.bigint "unity_id"
+    t.bigint "quantity", default: 0
+    t.text "observations"
     t.string "status"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["deposit_id"], name: "index_stock_movements_on_deposit_id"
     t.index ["movement_type_id"], name: "index_stock_movements_on_movement_type_id"
+    t.index ["product_category_id"], name: "index_stock_movements_on_product_category_id"
+    t.index ["product_id"], name: "index_stock_movements_on_product_id"
+    t.index ["unity_id"], name: "index_stock_movements_on_unity_id"
     t.index ["user_id"], name: "index_stock_movements_on_user_id"
   end
 
@@ -276,6 +291,16 @@ ActiveRecord::Schema.define(version: 20190108020240) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "full_name"
+    t.string "login", null: false
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.bigint "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.bigint "role_id"
+    t.string "status", default: "enable", null: false
+    t.boolean "receives_notifications", default: false
+    t.bigint "created_by"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -285,11 +310,11 @@ ActiveRecord::Schema.define(version: 20190108020240) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "companies", "users"
   add_foreign_key "customer_types", "users"
-  add_foreign_key "customers", "customer_types"
   add_foreign_key "customers", "users"
   add_foreign_key "delivery_men", "users"
   add_foreign_key "deposits", "users"
@@ -304,6 +329,7 @@ ActiveRecord::Schema.define(version: 20190108020240) do
   add_foreign_key "product_types", "users"
   add_foreign_key "products", "deposits"
   add_foreign_key "products", "product_categories"
+  add_foreign_key "products", "providers"
   add_foreign_key "products", "unities"
   add_foreign_key "products", "users"
   add_foreign_key "providers", "users"
@@ -319,7 +345,11 @@ ActiveRecord::Schema.define(version: 20190108020240) do
   add_foreign_key "stock_movement_details", "products"
   add_foreign_key "stock_movement_details", "stock_movements"
   add_foreign_key "stock_movement_details", "users"
+  add_foreign_key "stock_movements", "deposits"
   add_foreign_key "stock_movements", "movement_types"
+  add_foreign_key "stock_movements", "product_categories"
+  add_foreign_key "stock_movements", "products"
+  add_foreign_key "stock_movements", "unities"
   add_foreign_key "stock_movements", "users"
   add_foreign_key "unities", "users"
   add_foreign_key "user_roles", "roles"

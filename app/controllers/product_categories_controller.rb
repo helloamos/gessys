@@ -1,4 +1,6 @@
 class ProductCategoriesController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_product_category, only: [:show, :edit, :update, :destroy]
 
   layout "dashboard"
@@ -56,6 +58,10 @@ class ProductCategoriesController < ApplicationController
         format.js
       end
     end
+  end
+
+  def delete
+    @product_category = ProductCategory.find(params[:product_category_id])
   end
 
   # DELETE /product_categories/1

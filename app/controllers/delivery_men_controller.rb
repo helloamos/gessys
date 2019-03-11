@@ -1,4 +1,6 @@
 class DeliveryMenController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_delivery_man, only: [:show, :edit, :update, :destroy]
 
   # GET /delivery_men

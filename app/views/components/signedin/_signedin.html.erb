@@ -1,13 +1,29 @@
-<div class="c-dropdown dropdown">
-    <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= image_tag "avatar/avatar-72.jpg", alt: "User's Profile Picture", class: "c-avatar__img" %> 
+<div class="dropdown">
+    <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
+        <span class="logged-name hidden-md-down"><%= current_user.login %></span>
+        <img src="https://via.placeholder.com/500" class="wd-32 rounded-circle" alt="">
+        <%= image_tag current_user.avatar.url(:thumb),  alt: "Avatar",  class: "wd-32 rounded-circle" %> 
 
+        <span class="square-10 bg-success"></span>
     </a>
+    <div class="dropdown-menu dropdown-menu-header wd-250">
+        <div class="tx-center">
+        <a href=""><img src="https://via.placeholder.com/500" class="wd-80 rounded-circle" alt=""></a>
+        <h6 class="logged-fullname"><%= current_user.full_name %></h6>
+        <p><%= current_user.email %></p>
+        </div>
+        <hr>
+        <div class="tx-center">
+        
+        </div>
+        
+        <ul class="list-unstyled user-profile-nav">
+            
+            <li><%= link_to "Mon compte" , root_path, class: "dropdown-item" %> </li>
+            <div class="dropdown-divider"></div>
+            <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete,  class: "dropdown-item"  %></li>
 
-    <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">
-        <a class="c-dropdown__item dropdown-item" href="#">Edit Profile</a>
-        <a class="c-dropdown__item dropdown-item" href="#">View Activity</a>
-        <a class="c-dropdown__item dropdown-item" href="#">Manage Roles</a>
-         <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete,  class: "c-dropdown__item dropdown-item"  %>
-    </div>
-</div>
+
+        </ul>
+    </div><!-- dropdown-menu -->
+</div><!-- dropdown -->

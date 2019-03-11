@@ -21,5 +21,5 @@ class Customer < ApplicationRecord
   belongs_to :user
 
   # Fields validation.
-  validates_presence_of :full_name,  :city
+  validates_presence_of :name,  :city
 end

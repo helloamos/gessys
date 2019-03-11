@@ -1,79 +1,115 @@
+<!-- ########## START: LEFT PANEL ########## -->
 
-    <h5 class="sidenav-heading">Menu</h5>
-		<ul id="side-main-menu" class="side-menu list-unstyled">   
-		              
-            <li>
-				<%= link_to raw('<i class="fa fa-line-chart" aria-hidden="true"></i>Tableau de bord'), dashboard_path %>
-			</li>
-			<li>
-				<%= link_to raw('<i class="fa fa-download" aria-hidden="true"></i>
-				Injections'), logs_path %>
-			</li>
-			<li>
-				<%= link_to raw('<i class="fa fa-search" aria-hidden="true"></i>
-Recherche'), search_path %>
-			</li>
-			<li>
-				<%= link_to raw('<i class="fa fa-balance-scale" aria-hidden="true"></i>
-Crédits'), credits_path %>
-			</li>
-			
-			<li>
-				<a href="#commissiondropdownDropdown" aria-expanded="false" data-toggle="collapse"> 
-					<i class="fa fa-money" aria-hidden="true"></i>Commissions</a>
-                <ul id="commissiondropdownDropdown" class="collapse list-unstyled ">
-                    <li><%= link_to raw('<i class="fa fa-address-book-o" aria-hidden="true"></i>Apporteurs'), contributors_commissions_path %>
-                    </li>
-                    <li>
-                        <%= link_to raw('<i class="fa fa-address-book" aria-hidden="true"></i> Producteurs'), producers_commissions_path %>
-                    </li>
-                    <li>
-                        <%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i> Banques'), banks_commissions_path %>
-                    </li>
-                </ul>
+      <ul class="br-sideleft-menu">
+        <li class="br-menu-item">
+          <a href="index.html" class="br-menu-link active">
+            <i class="menu-item-icon icon ion-ios-home-outline tx-24"></i>
+            <span class="menu-item-label">Tableau de bord</span>
+          </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
+        
+
+
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub">
+            <i class="fa fa-money tx-20"></i>
+            <span class="menu-item-label">Ventes</span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            
+            <li class="sub-item">
+                <%= link_to  "Commandes", orders_path, class: "sub-link" %>
             </li>
-				
-           
-            <li>
-                <%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Banques'), banks_path %>
-			</li>
-			
-		<li>
-				<a href="#historiquedropdownDropdown" aria-expanded="false" data-toggle="collapse"> 
-				<i class="fa fa-history" aria-hidden="true"></i>Historique d'édition</a>
-                <ul id="historiquedropdownDropdown" class="collapse list-unstyled ">
-                    <li><%= link_to raw('<i class="fa fa-address-book-o" aria-hidden="true"></i>Comm. Apporteurs'), user_commission_editions_path %>
-                    </li>
-                   
-                    <li>
-                        <%= link_to raw('<i class="fa fa-address-book" aria-hidden="true"></i>Comm. Producteurs'), user_commission_editions_path %>
-					</li>
-					<li>
-					<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i> Comm. banques'), bank_commission_editions_path %>
-				</li>
-                </ul>
-			</li>
-			
-				<% if is_admin? %>
-					<li>
-						<a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-cogs" aria-hidden="true"></i>
-						Paramètres</a>
-						<ul id="exampledropdownDropdown" class="collapse list-unstyled">
-							
-								<li>
-									<%= link_to raw('<i class="fa fa-user" aria-hidden="true"></i> Utilisateurs'), all_users_path %>
-								</li>
-							
-					
-							<li><%= link_to raw('<i class="fa fa-home" aria-hidden="true"></i>
-									Société'), show_company_path(current_company) %>
-							</li>
-                            
-							
-					
-				</ul>
-			</li>
-		<% end %>
-    </ul>
+             <li class="sub-item">
+                <%= link_to  "Factures", users_path, class: "sub-link" %>
+            </li>
+          </ul>
+        </li>
 
-   
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub">
+            <i class="fa fa-shopping-cart tx-20"></i>
+            <span class="menu-item-label">Achats</span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            
+            <li class="sub-item">
+                <%= link_to  "Bons de commandes", purchase_orders_path, class: "sub-link" %>
+            </li>
+             
+          </ul>
+        </li>
+
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub">
+            <i class="fa fa-cubes tx-20"></i>
+            <span class="menu-item-label">Stocks</span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            
+            <li class="sub-item">
+                <%= link_to  "Produits", products_path, class: "sub-link" %>
+            </li>
+             <li class="sub-item">
+                <%= link_to  "Mouvements de stock", stock_movements_path, class: "sub-link" %>
+            </li>
+          </ul>
+        </li>
+
+         
+
+
+        
+
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub">
+            <i class="fa fa-users tx-20"></i>
+            <span class="menu-item-label">Tierces</span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            
+            <li class="sub-item">
+                <%= link_to  "Clients", customers_path, class: "sub-link" %>
+            </li>
+             <li class="sub-item">
+                <%= link_to  "Fournisseurs", providers_path, class: "sub-link" %>
+            </li>
+          </ul>
+        </li>
+
+        
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub">
+            <i class="fa fa-cogs tx-20"></i>
+            <span class="menu-item-label">Paramètres</span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            
+            <li class="sub-item">
+                <%= link_to  "Utilisateurs", users_path, class: "sub-link" %>
+            </li>
+
+            <li class="sub-item">
+                <%= link_to  "Catégories produits", product_categories_path, class: "sub-link" %>
+            </li>
+
+            <li class="sub-item">
+                <%= link_to  "Types de mouvement", movement_types_path, class: "sub-link" %>
+            </li>
+             <li class="sub-item">
+                <%= link_to  "Dépôts", deposits_path, class: "sub-link" %>
+            </li>
+            <li class="sub-item">
+                <%= link_to  "Unités", unities_path, class: "sub-link" %>
+            </li>
+          </ul>
+        </li>
+       
+      </ul><!-- br-sideleft-menu -->
+
+      
+       
+        
+      </div><!-- info-list -->
+
+    <!-- ########## END: LEFT PANEL ########## -->

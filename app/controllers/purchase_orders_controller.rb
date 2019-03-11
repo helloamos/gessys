@@ -1,6 +1,7 @@
 class PurchaseOrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_purchase_order, only: [:show, :edit, :update, :destroy]
-
+  layout "dashboard"
   # GET /purchase_orders
   # GET /purchase_orders.json
   def index
@@ -15,10 +16,12 @@ class PurchaseOrdersController < ApplicationController
   # GET /purchase_orders/new
   def new
     @purchase_order = PurchaseOrder.new
+    @providers = Provider.all
   end
 
   # GET /purchase_orders/1/edit
   def edit
+    @providers = Provider.all
   end
 
   # POST /purchase_orders

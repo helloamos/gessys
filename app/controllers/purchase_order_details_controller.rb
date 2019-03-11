@@ -1,4 +1,6 @@
 class PurchaseOrderDetailsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_purchase_order_detail, only: [:show, :edit, :update, :destroy]
 
   # GET /purchase_order_details

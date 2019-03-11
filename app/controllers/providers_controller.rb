@@ -1,4 +1,6 @@
 class ProvidersController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_provider, only: [:show, :edit, :update, :destroy]
   layout "dashboard"
 
@@ -50,13 +52,18 @@ class ProvidersController < ApplicationController
         @providers = current_user.providers
         format.html { redirect_to @provider, notice: 'Provider was successfully updated.' }
         format.json { render :show, status: :ok, location: @provider }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @provider.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
 
+  def delete
+    @provider = Provider.find(params[:provider_id])
+  end
   # DELETE /providers/1
   # DELETE /providers/1.json
   def destroy
@@ -64,6 +71,7 @@ class ProvidersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to providers_url, notice: 'Provider was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 

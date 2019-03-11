@@ -14,6 +14,6 @@
 class StockMovement < ApplicationRecord
   belongs_to :movement_type
   belongs_to :user
-  has_many :stock_movement_details, dependent: :destroy
-  accepts_nested_attributes_for :stock_movement_details
+  has_many :stock_movement_details, inverse_of: :stock_movement
+  accepts_nested_attributes_for :stock_movement_details, allow_destroy: true
 end

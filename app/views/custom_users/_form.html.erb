@@ -1,6 +1,6 @@
 <%= form_with(model: user, url: create_user_path, local: false) do |f| %>
 
-             <div class="c-modal__body">
+             <div class="modal-body">
                   <ul class="errors">
                                     
    
@@ -9,29 +9,29 @@
                     <% end %>
                 </ul>
 
-                    <div class="c-field u-mb-small">
-                        <%= f.label :email, class: "c-field__label" %>
-                        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "c-input", placeholder: "E-mail" %>
+                    <div class="form-group">
+                        <%= f.label :email %>
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "E-mail" %>
                     </div>
 									
 
-                    <div class="c-field u-mb-small">
-                        <%= f.label :password, class: "c-field__label" %>
+                    <div class="form-group">
+                        <%= f.label :password %>
                         <% if @minimum_password_length %>
                         <em>(<%= @minimum_password_length %> characters minimum)</em>
                         <% end %>
-                        <%= f.password_field :password, autocomplete: "off", class: "c-input", placeholder: "Mot de passe" %>
+                        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Mot de passe" %>
                     </div>
 								
-                    <div class="c-field u-mb-small">
-                        <%= f.label :password_confirmation, class: "c-field__label" %>
-                        <%= f.password_field :password_confirmation, autocomplete: "off", class: "c-input", placeholder: "Confirmation du mot de passe" %>
+                    <div class="form-group">
+                        <%= f.label :password_confirmation %>
+                        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmation du mot de passe" %>
                     </div>
                
             </div><!-- modal body -->
-            <div class="c-modal__footer">
-                    <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
-                    <%= f.submit "Enregistrer", class: "c-btn c-btn--success",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+            <div class="modal-footer">
+                    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+                    <%= f.submit "Enregistrer", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
             </div>
 
 
