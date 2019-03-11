@@ -12,7 +12,10 @@ roles = Role.create([{name: "Administrateur"}, {name: "Utilisateur"}])
 
 # Add initial users in database.
 users = User.create([{login: "thkernel", full_name: "Amos DEMBELE",   role_id: roles.first.id, email: "salut.amos@gmail.com", password: "AMOSXZIBITDE88",
-    password_confirmation: "AMOSXZIBITDE88"}])
+    password_confirmation: "AMOSXZIBITDE88"},
+    {login: "demo", full_name: "Demo",   role_id: roles.first.id, email: "demo@gmail.com", password: "demo@2019",
+        password_confirmation: "AMOSXZIBITDE88"}
+])
 
 product_categories = ProductCategory.create([
     {name: "INFORMATIQUE", user_id: users.first.id}, 
@@ -80,3 +83,14 @@ products = Product.create([
 ])
 
 company = Company.create(name: "AUCTUM", user_id: users.first.id, address: "KALABAN COURA", phone: "+223 70 47 11 35")
+
+
+# Capistrano-rails-collection cammands
+#cap production rails:rake:log:clear
+#cap production rails:rake:tmp:clear
+#cap production rails:rake:db:drop
+#cap production rails:rake:db:reset
+#cap production rails:rake:db:setup
+#cap production rails:rake:db:seed
+#cap production rails:rake:db:migrate
+#cap production rails:rake:db:rollback
