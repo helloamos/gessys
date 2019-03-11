@@ -14,7 +14,7 @@ roles = Role.create([{name: "Administrateur"}, {name: "Utilisateur"}])
 users = User.create([{login: "thkernel", full_name: "Amos DEMBELE",   role_id: roles.first.id, email: "salut.amos@gmail.com", password: "AMOSXZIBITDE88",
     password_confirmation: "AMOSXZIBITDE88"},
     {login: "demo", full_name: "Demo",   role_id: roles.first.id, email: "demo@gmail.com", password: "demo@2019",
-        password_confirmation: "AMOSXZIBITDE88"}
+        password_confirmation: "demo@2019"}
 ])
 
 product_categories = ProductCategory.create([
