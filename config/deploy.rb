@@ -34,7 +34,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 
 set :nginx_config_name, 'gessys.prod'
-set :nginx_server_name, 'ges'
+set :nginx_server_name, 'gessys'
 set :puma_workers,1
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
